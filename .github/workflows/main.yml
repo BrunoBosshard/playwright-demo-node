@@ -23,3 +23,15 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm ci
       - run: npx playwright test
+      - name: Upload artifacts report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: public
+          if-no-files-found: ignore
+      - name: Deploy Cypress report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report
+          destination_dir: docs
