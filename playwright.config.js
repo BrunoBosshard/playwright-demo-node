@@ -1,9 +1,13 @@
 const { devices } = require('@playwright/test');
 const config = {
+  /* Fail the build on CI if you accidentally left test.only in the source code */
   forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   use: {
-    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'off',
+    trace: 'on-first-retry'
   },
   reporter: [ ['html', { open: 'never' }] ],  
   projects: [
