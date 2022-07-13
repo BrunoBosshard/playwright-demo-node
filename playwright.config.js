@@ -8,16 +8,19 @@ const config = {
   reporter: [ ['html', { open: 'never' }] ],  
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Desktop Chrome',
+      browserName: 'chromium',
+      viewport: { width: 1280, height: 720 }
     },
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'Desktop Firefox',
+      browserName: 'firefox',
+      viewport: { width: 1280, height: 720 }
     },
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: 'Desktop Safari',
+      browserName: 'webkit',
+      viewport: { width: 1280, height: 720 }
     },
     {
       name: 'Apple iOS',
