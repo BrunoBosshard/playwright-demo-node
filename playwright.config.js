@@ -5,7 +5,7 @@ const config = {
   use: {
     trace: 'on-first-retry',
   },
-  reporter: [ ['html', { open: 'never' }] ],
+  reporter: [ ['html', { open: 'never' }] ],  
   projects: [
     {
       name: 'chromium',
@@ -19,6 +19,14 @@ const config = {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+    {
+      name: 'Apple iOS',
+      use: { ...devices['iPhone 13 Pro'] },
+    },
+    {
+      name: 'Google Android',
+      use: { ...devices['Pixel 5'] },
+    }
   ],
 };
 module.exports = config;
