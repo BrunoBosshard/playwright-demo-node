@@ -5,6 +5,7 @@ const config = {
   use: {
     trace: 'on-first-retry',
   },
+  reporter: [ ['html', { open: 'never' }] ],
   projects: [
     {
       name: 'chromium',
