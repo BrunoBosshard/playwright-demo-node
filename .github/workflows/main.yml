@@ -1,0 +1,28 @@
+name: Playwright experiments
+on:
+  push:
+  schedule:
+    # run 10 minutes past every 2nd hour
+    - cron: '10 */2 * * *'
+jobs:
+  playwright-tests:
+    name: Playwright version 1.23
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.23.0-focal
+    # stop the job if it runs over 115 minutes
+    # to prevent a hanging process from using CI minutes
+    timeout-minutes: 115
+    steps:
+      - name: Delete workflow runs older than one week
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 10
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Playwright run
+        uses: actions/setup-node@v3
+        run: npm ci
+        run: npx playwright test
