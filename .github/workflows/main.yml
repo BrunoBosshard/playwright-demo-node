@@ -23,6 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Playwright run
-        uses: actions/setup-node@v3
-        run: npm ci
-        run: npx playwright test
+      - uses: actions/setup-node@v3
+      - run: | 
+          npm ci
+          npx playwright test
