@@ -5,9 +5,9 @@ const config = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   use: {
-    screenshot: 'on',
-    video: 'on',
-    trace: 'on'
+    screenshot: 'only-on-failure',
+    video: 'off',
+    trace: 'on-first-retry'
   },
   reporter: [ ['html', { open: 'never' }] ],  
   projects: [
