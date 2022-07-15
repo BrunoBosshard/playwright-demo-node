@@ -5,6 +5,7 @@ const config = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   use: {
+    baseURL: 'https://playwright.dev',
     screenshot: 'only-on-failure',
     video: 'off',
     trace: 'on-first-retry'
