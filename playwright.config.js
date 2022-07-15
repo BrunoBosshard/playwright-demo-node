@@ -1,9 +1,12 @@
 const { devices } = require('@playwright/test');
 const config = {
+  testDir: './tests',
   /* Fail the build on CI if test.only is left in the source code */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
   use: {
     baseURL: 'https://playwright.dev',
     screenshot: 'only-on-failure',
