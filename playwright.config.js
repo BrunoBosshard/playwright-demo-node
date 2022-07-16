@@ -8,7 +8,7 @@ const config = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* GitHub and HTML reporters on CI, HTML only locally */
-  reporter: process.env.CI ? [['github'],['html']] : ['html',{open:'never'}],
+  reporter: process.env.CI ? [['github'],['html']] : [['html',{open:'never'}]],
   use: {
     baseURL: 'https://playwright.dev',
     screenshot: 'only-on-failure',
