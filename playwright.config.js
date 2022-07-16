@@ -39,6 +39,6 @@ const config = {
       name: 'Google Android',
       use: { ...devices['Pixel 5'] },
     }
-  ],
+  ]
 };
 module.exports = config;
