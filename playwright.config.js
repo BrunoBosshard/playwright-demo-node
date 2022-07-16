@@ -7,13 +7,14 @@ const config = {
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+  /* GitHub and HTML reporters on CI, HTML only locally */
+  reporter: process.env.CI ? [['github'],['html']] : ['html',{open:'never'}],
   use: {
     baseURL: 'https://playwright.dev',
     screenshot: 'only-on-failure',
     video: 'off',
     trace: 'on-first-retry'
-  },
-  reporter: [ ['html', { open: 'never' }] ],  
+  }, 
   projects: [
     {
       name: 'Desktop Chrome',
