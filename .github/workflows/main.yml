@@ -1,4 +1,4 @@
-name: Playwright experiments
+name: Playwright demo tests
 on:
   push:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     # run 10 minutes past every 2nd hour
     - cron: '10 */2 * * *'
 jobs:
-  playwright-tests:
+  playwright-demo-node:
     name: Playwright version 1.23
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.23.0-focal
