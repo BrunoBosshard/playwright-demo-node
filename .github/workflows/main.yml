@@ -1,6 +1,7 @@
 name: Playwright experiments
 on:
   push:
+  workflow_dispatch:
   schedule:
     # run 10 minutes past every 2nd hour
     - cron: '10 */2 * * *'
