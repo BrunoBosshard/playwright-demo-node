@@ -12,7 +12,7 @@ const config = {
   use: {
     baseURL: 'https://playwright.dev',
     screenshot: 'only-on-failure',
-    video: 'off',
+    video: 'on',
     trace: 'on-first-retry'
   }, 
   projects: [
