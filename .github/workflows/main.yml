@@ -3,8 +3,8 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    # run at minute 5 past every 3rd hour from 1 through 23
-    - cron: '5 1/3 * * *'
+    # run at minute 5 past every 4th hour from 1 through 23
+    - cron: '5 1/4 * * *'
 jobs:
   playwright-demo-node:
     name: Playwright version 1.23
