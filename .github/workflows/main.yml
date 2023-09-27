@@ -7,9 +7,9 @@ on:
     - cron: "5 1/4 * * *"
 jobs:
   playwright-demo-node:
-    name: Playwright version 1.34
+    name: Playwright version 1.38
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.34.0-jammy
+    container: mcr.microsoft.com/playwright:v1.38.1-jammy
     # stop the job if it runs over 115 minutes
     # to prevent a hanging process from using CI minutes
     timeout-minutes: 115
