@@ -33,7 +33,7 @@ const config = {
     },
     {
       name: 'Apple iOS',
-      use: { ...devices['iPhone 13 Pro'] },
+      use: { ...devices['iPhone 14 Pro'] },
     },
     {
       name: 'Google Android',
