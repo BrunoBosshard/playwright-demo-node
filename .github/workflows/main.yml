@@ -7,36 +7,39 @@ on:
     - cron: "5 1/4 * * *"
 jobs:
   playwright-demo-node:
-    name: Playwright version 1.38
+    name: Playwright version 1.64
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.38.1-jammy
+    container: mcr.microsoft.com/playwright:v1.64.1-noble
     # stop the job if it runs over 115 minutes
     # to prevent a hanging process from using CI minutes
     timeout-minutes: 115
     steps:
       - name: Delete workflow runs older than one week
-        uses: Mattraks/delete-workflow-runs@v2
+        uses: Mattraks/delete-workflow-runs@v2.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           retain_days: 7
           keep_minimum_runs: 10
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
+        with:
+          # Node 26 is the current (latest stable) release line
+          node-version: 26
       - name: Npm install
         run: npm ci
       - name: Run tests
         run: npx playwright test
       - name: Upload artifacts report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report
           path: playwright-report
           if-no-files-found: ignore
       - name: Deploy Playwright report
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./playwright-report
